@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AKATSUKI - Men's Wear</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="d-flex justify-content-between align-items-center p-3 px-4 shadow sticky-top bg-dark">
+    <a href="#home" class="logo text-decoration-none">AKATSUKI</a>
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#shirt">Shirt</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tshirt">T-shirt</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pant">Pant</a></li>
+        <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+        <li class="nav-item"><a class="nav-link" href="myorders.html">My Orders</a></li>
+      </ul>
+    </nav>
+    <div>
+      <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
+      <a href="signup.html" class="btn btn-light btn-sm">Sign-up</a>
+    </div>
+  </header>
+
+  <main class="container my-4">
+
+    <!-- Infinity Roller -->
+    <section id="home" class="mb-5">
+      <h2 class="text-center mb-3">AKATSUKI NEW COLLECTION</h2>
+      <div class="roller">
+        <div class="roller-track">
+          <div class="roller-item" style="background-image: url('roller1.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller2.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller3.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller4.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller5.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller1.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller2.jpg');"></div>
+          <div class="roller-item" style="background-image: url('roller3.jpg');"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHIRTS -->
+    <section id="shirt" class="mb-5">
+      <h2 class="text-center">Shirts</h2>
+      <div class="row g-4">
+        <!-- SHIRT 1 -->
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="shirt1.jpg" alt="Casual Shirt" class="img-fluid mb-2">
+            <h3>Casual Shirt</h3>
+            <p>₹599</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <!-- SHIRT 2 -->
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="shirt2.jpg" alt="Formal Shirt" class="img-fluid mb-2">
+            <h3>Formal Shirt</h3>
+            <p>₹699</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <!-- SHIRT 3 -->
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="shirt3.jpg" alt="Party Shirt" class="img-fluid mb-2">
+            <h3>Party Shirt</h3>
+            <p>₹799</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- T-SHIRTS -->
+    <section id="tshirt" class="mb-5">
+      <h2 class="text-center">T-shirts</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="tshirt1.jpg" alt="Graphic Tee" class="img-fluid mb-2">
+            <h3>Graphic Tee</h3>
+            <p>₹499</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="tshirt2.jpg" alt="Plain T-shirt" class="img-fluid mb-2">
+            <h3>Plain T-shirt</h3>
+            <p>₹399</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="tshirt3.jpg" alt="Oversized Tee" class="img-fluid mb-2">
+            <h3>Oversized Tee</h3>
+            <p>₹599</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANTS -->
+    <section id="pant" class="mb-5">
+      <h2 class="text-center">Pants</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="pant1.jpg" alt="Denim Jeans" class="img-fluid mb-2">
+            <h3>Denim Jeans</h3>
+            <p>₹999</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="pant2.jpg" alt="Cotton Pants" class="img-fluid mb-2">
+            <h3>Cotton Pants</h3>
+            <p>₹899</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="pant3.jpg" alt="Cargo Pants" class="img-fluid mb-2">
+            <h3>Cargo Pants</h3>
+            <p>₹1099</p>
+            <select class="form-select mb-1">
+              <option>Select Size</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+            <input type="number" min="1" value="1" class="form-control mb-2">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-primary btn-sm"><i class="bi bi-cart-fill"></i> Add to Cart</button>
+              <button class="btn btn-success btn-sm"><i class="bi bi-bag-check-fill"></i> Order Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-dark text-light text-center p-4 mt-5">
+    <div class="container">
+      <p class="mb-1"><i class="bi bi-telephone"></i> Contact us: <a href="tel:+919999999999" class="text-light text-decoration-underline">+91-9999999999</a></p>
+      <p class="mb-1">
+        Follow us:
+        <a href="#" class="text-light text-decoration-underline">Instagram</a> |
+        <a href="#" class="text-light text-decoration-underline">Facebook</a> |
+        <a href="#" class="text-light text-decoration-underline">Twitter</a>
+      </p>
+      <p class="mb-0">&copy; 2025 AKATSUKI Men's Wear. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
