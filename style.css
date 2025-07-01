@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --dark-blue: #0b1a33;
+  --blackish: #050c1a;
+  --accent: #ff5100;
+  --accent-dark: #c14100;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: var(--dark-blue);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: var(--blackish);
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.nav-link {
+  color: var(--white) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.btn-outline-light {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.btn-light {
+  background-color: var(--accent);
+  border: none;
+}
+
+.btn-light:hover {
+  background-color: var(--accent-dark);
+  color: var(--white);
+}
+
+/* Roller */
+.roller {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+.roller-track {
+  display: flex;
+  width: calc(220px * 12);
+  animation: scroll 30s linear infinite;
+}
+
+.roller-item {
+  width: 220px;
+  height: 200px;
+  margin-right: 10px;
+  background: #333 url('placeholder.jpg') center/cover no-repeat;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Product Card */
+.product-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.product-card img {
+  border-radius: 8px;
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.product-card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+
+.product-card p {
+  font-weight: bold;
+  color: var(--white);
+}
+
+/* Size & Quantity selectors always visible */
+.product-card select,
+.product-card input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 0.3rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+  border: 1px solid var(--accent);
+  background: var(--blackish);
+  color: var(--white);
+}
+
+.product-card select:focus,
+.product-card input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent-dark);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-dark);
+}
+
+.btn-success {
+  background-color: #673ab7;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-success:hover {
+  background-color: #5e35b1;
+}
+
+.btn-primary i,
+.btn-success i {
+  font-size: 1rem;
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .roller-track {
+    width: calc(180px * 12);
+  }
+  .roller-item {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .roller {
+    height: 150px;
+  }
+  .roller-item {
+    width: 150px;
+    height: 150px;
+  }
+  .product-card h3 {
+    font-size: 1rem;
+  }
+  .product-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .roller {
+    height: 120px;
+  }
+  .roller-item {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .roller {
+    height: 100px;
+  }
+  .roller-item {
+    width: 100px;
+    height: 100px;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}

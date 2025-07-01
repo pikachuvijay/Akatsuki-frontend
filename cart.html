@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - AKATSUKI - men's wear</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0d1b2a;
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .cart-container {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .cart-container:hover {
+      box-shadow: 0 12px 30px rgba(255,255,255,0.2);
+    }
+    .btn-akatsuki {
+      background: #ff5100;
+      border: none;
+    }
+    .btn-akatsuki:hover {
+      background: #e04900;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-container">
+    <h2 class="text-center mb-4">Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="text-end mt-3">
+      <button class="btn btn-akatsuki" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartItemsDiv = document.getElementById("cartItems");
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      let html = '<ul class="list-group">';
+      cart.forEach(item => {
+        html += `<li class="list-group-item bg-transparent text-white d-flex justify-content-between align-items-center">
+                  ${item.name} (₹${item.price}) x ${item.qty}
+                  <span>₹${item.price * item.qty}</span>
+                 </li>`;
+      });
+      html += '</ul>';
+      cartItemsDiv.innerHTML = html;
+    }
+
+    function checkout() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders.push({
+        user: localStorage.getItem("loggedInUser") || "Guest",
+        items: cart,
+        time: new Date().toLocaleString(),
+        address: "Default Address",
+        status: "Placed"
+      });
+      localStorage.setItem("orders", JSON.stringify(orders));
+      localStorage.removeItem("cart");
+      alert("Order placed successfully!");
+      window.location.href = "myorders.html";
+    }
+
+    renderCart();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
