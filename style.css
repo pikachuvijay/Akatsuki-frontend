@@ -110,7 +110,7 @@ header {
 
 .product-card img {
   border-radius: 8px;
-  max-height: 200px;
+  max-height: 350px;
   object-fit: cover;
   width: 100%;
 }
@@ -239,4 +239,120 @@ h2 {
   h2 {
     font-size: 1.5rem;
   }
+}
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  padding: 40px 60px;
+  color: #fff;
+}
+
+/* Blurred background */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('watchinterface.jpg') center/cover no-repeat;
+  filter: blur(10px);  /* Strong blur */
+  z-index: 0;
+  opacity: 0.8; /* Slight transparency if you want */
+}
+
+/* Bring content above blur */
+.banner-text,
+.banner-image {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-text {
+  max-width: 50%;
+}
+
+.banner-text h2 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.banner-text .highlight {
+  color:#ff5100; /* Akatsuki orange font */
+}
+
+.banner-text p {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.shop-button {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+.shop-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.banner-image img {
+  max-height: 250px;
+  border-radius: 8px;
+}
+
+/*about akatsuki*/
+.about-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* So it stacks on mobile */
+}
+
+.about-image img {
+  width: 250px;   /* Adjust size as needed */
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-text {
+  max-width: 400px;
+  text-align: left;
+}
+
+.about-text h3 {
+  font-family: 'Times New Roman', serif;  /* Elegant font like your example */
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-family: 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
