@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cart - AKATSUKI - men's wear</title>
+  <title>Cart - AKATSUKI - Men's Wear</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       background: #0d1b2a;
       color: #fff;
       min-height: 100vh;
-      padding: 2rem;
     }
     .cart-container {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
+      max-width: 800px;
+      margin: 2rem auto;
+      background: rgba(255,255,255,0.05);
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
-    .cart-container:hover {
-      box-shadow: 0 12px 30px rgba(255,255,255,0.2);
+    .cart-item {
+      background: rgba(255,255,255,0.1);
+      border: none;
+    }
+    .cart-item .item-name {
+      font-weight: bold;
     }
     .btn-akatsuki {
       background: #ff5100;
@@ -36,7 +40,8 @@
   <div class="cart-container">
     <h2 class="text-center mb-4">Your Cart</h2>
     <div id="cartItems"></div>
-    <div class="text-end mt-3">
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <h4>Total: ₹<span id="cartTotal">0</span></h4>
       <button class="btn btn-akatsuki" onclick="checkout()">Checkout</button>
     </div>
   </div>
@@ -45,40 +50,86 @@
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const cartItemsDiv = document.getElementById("cartItems");
+      const cartTotalDiv = document.getElementById("cartTotal");
       if (cart.length === 0) {
         cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotalDiv.textContent = "0";
         return;
       }
 
+      let total = 0;
       let html = '<ul class="list-group">';
-      cart.forEach(item => {
-        html += `<li class="list-group-item bg-transparent text-white d-flex justify-content-between align-items-center">
-                  ${item.name} (₹${item.price}) x ${item.qty}
-                  <span>₹${item.price * item.qty}</span>
-                 </li>`;
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        html += `
+          <li class="list-group-item cart-item d-flex justify-content-between align-items-center text-white">
+            <div>
+              <div class="item-name">${item.name}</div>
+              <small>₹${item.price} x ${item.qty} = ₹${itemTotal}</small>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-outline-light" onclick="changeQty(${index}, 1)">+</button>
+              <button class="btn btn-sm btn-outline-light" onclick="changeQty(${index}, -1)">-</button>
+              <button class="btn btn-sm btn-danger" onclick="removeItem(${index})">Remove</button>
+            </div>
+          </li>`;
       });
       html += '</ul>';
       cartItemsDiv.innerHTML = html;
+      cartTotalDiv.textContent = total;
     }
 
-    function checkout() {
+    function changeQty(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    async function checkout() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       if (cart.length === 0) {
         alert("Your cart is empty.");
         return;
       }
-      const orders = JSON.parse(localStorage.getItem("orders")) || [];
-      orders.push({
+
+      const order = {
         user: localStorage.getItem("loggedInUser") || "Guest",
         items: cart,
-        time: new Date().toLocaleString(),
+        time: new Date().toISOString(),
         address: "Default Address",
         status: "Placed"
-      });
-      localStorage.setItem("orders", JSON.stringify(orders));
-      localStorage.removeItem("cart");
-      alert("Order placed successfully!");
-      window.location.href = "myorders.html";
+      };
+
+      try {
+        const res = await fetch("https://your-backend-url/api/orders", {  // Replace with your backend URL
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(order)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          localStorage.removeItem("cart");
+          alert("Order placed successfully!");
+          window.location.href = "myorders.html";
+        } else {
+          alert("Checkout failed: " + (data.message || "Unknown error"));
+        }
+      } catch (err) {
+        alert("Error connecting to server.");
+      }
     }
 
     renderCart();
